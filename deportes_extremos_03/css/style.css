@@ -1,0 +1,255 @@
+:root{
+	font-size: 62.5%; /*EL DEFAULT SON 16PX, POR LO QUE ASI LE INDICAMOS QUE 1 REM SEAN 10PX*/
+}
+
+body{
+	font-family: Arial, Helvetica, Sans-serif;
+	color: #232323;
+	font-size: 1.5rem; /*son 15px*/
+	overflow-x: hidden; /*para que esconda lo que quede fuera de pantalla*/
+}
+header{
+	background-color: #232323;
+	padding: 2rem; /*20px*/
+	overflow: hidden;  /*cambie de AUTO a HIDDEN */
+}
+header h1{
+	font-size: 2.5rem; /*25px*/
+	color: #ffff;
+	font-weight: 600;
+	float: left;
+	background-image: url("../img/logo.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	padding-left: 6rem; /*60px*/
+}
+header a{
+	color: #fff;
+	text-decoration: none;
+	padding: 5px; /*padding a nuestros elementos del NAV*/
+	display: block;
+}
+nav{
+	float: right;
+}
+nav ul li{
+	display: inline-block;
+}
+/*aplicamos una pseudo clase, realiza una acción: */
+header a:hover{
+	background-color: #fff;
+	color: #232323;
+}
+
+/**** SLIDER, CLASE 2 *****/
+
+#noticias-destacadas figure {
+	float: left;
+	width: 100vw; /*Le decimos al figure que utilice una UNIDAD RELATIVA al VIEW PORT*/
+	position: relative;
+}
+img{
+	display: block;
+	width: 100%; /*toma el %100 en relación al contendero padre, que es el figure*/
+
+}
+
+#noticias-destacadas figcaption{
+	background-color: #232323;
+	padding: 2rem;
+
+}
+#noticias-destacadas h2{
+	color: #ffff;
+	font-size: 3rem;
+	font-weight: 600;
+	line-height: 100%; /*ALTURA DE LA LINEA*/
+}
+
+/**** CLASE 3 *****/
+
+/*---------------- animaciones -------------------*/
+/* * {
+  outline: dotted 1px red;
+} */
+
+#noticias-destacadas{
+	width: calc(100vw * 3); /* medida de BLOQUE *3*. También se puede poner 300vw */
+	/* VW UNIDAD RELATIVA DEL VIEWPORT, ES VIEWPORT WIDHT */
+	overflow: auto;
+	animation-name: slider;
+	animation-duration: 20s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes slider{
+	
+	/* el % hace referencia al tiempo de duracion de la animacion */
+	
+	0%{
+		margin-left: 0; /*en el 0% posición inicial, no hagas nada*/
+}
+	20%{
+		margin-left: 0;
+}
+	40%{
+		margin-left: -100vw; /*cuando estes al 40%, correte -100 y deja pasar al que viene */
+}
+	60%{
+		margin-left: -100vw; /*quedate ahi */
+}
+	80%{
+		margin-left: -200vw; /*en 80% movete correte -100 */
+}
+	100%{
+		margin-left: -200vw; 
+}
+}
+
+/*--------- NOTICIAS---------*/
+
+.noticia{
+	display: flex;
+	border-bottom: 1px solid #727272;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+	margin: 10px;
+}
+
+.noticia-img{
+	width: 30%;
+}
+
+/*PSEUDO ELEMENTO: Manipula un elemento en particular sin identificarlo ni con ID ni con Clase diferente.
+Accedemos con . o # según corresponda. y :
+Por ejemplo, tenemos 4 imagenes en las noticias. Nosotros le pusimos un border bottom a cada bloque de noticia, y la última noticia no lleva ese borde asi que aplicamos un pseudo-elemento sobre eso:*/
+
+.noticia:last-child{
+	border: none;
+}
+
+.noticia-texto{
+	width: 65%;
+}
+
+/*seguir con estilo SECCIÓN NOTICIAS*/
+
+.noticia-texto h3{
+	font-size: 27px;
+	font-weight: 700;
+
+}
+
+.noticia-texto a{
+	text-decoration: none;
+}
+
+.noticia-texto h3,
+.noticia-texto p{
+	line-height: 1.5;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/*----------TABLA CSS*---------------*/
+
+#tabla-posiciones td,
+#tabla-posiciones th{
+	padding: 12px;
+}
+#tabla-posiciones th{
+	background-color: red;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+#tabla-posiciones td{
+	background-color: rgb(230 230 230);
+	vertical-align: middle;
+}
+
+#tabla-posiciones table{
+	width: 600px;
+	margin-top: auto;
+	margin-right: auto;
+	margin-left: auto;
+
+}
+
+#tabla-posiciones tr{
+	border-bottom: 1px solid rgb(202 202 202);
+}
+
+#tabla-posiciones tr:first-child,
+#tabla-posiciones tr:last-child {
+	border:none;
+}
+
+#tabla-posiciones td:nth-of-type(odd){/*Estamos indicando que seleccione a todos los TD impares de la tabla y les ponga e estilo indicado. La contabilización se inicia en el valor UNO*/
+	font-weight: 700;
+	font-size: 20px;
+	text-align: center;
+}
+
+#tabla-posiciones td:nth-of-type(even) span{ /*estamos diciendolo que tome TODOS los SPAN dentro de los TD*/
+	font-weight: 700;
+	color: #3B4C99;
+}
+
+
+
+footer {
+	background-color: #232323;
+	color: #fff;
+	padding: 20px;
+	margin-top: 30px;
+	text-align: center;
+}
+
+button {
+	display: none;
+
+}
+
+
+@media screen and (max-width: 600px){
+	button {
+	display: block;
+	float: right;
+	color: #fff;
+	background-color: transparent;
+	font-size: 2rem;
+	border: none;
+	line-height: 1;
+	padding: 1rem;
+}
+	.noticia {
+		flex-direction: column; /*nosotros teniamos el flexbox en FILA, ahora le decimos que se muestre en columnas para pantallas de hasta 600px*/
+	}
+	.noticia-img,
+	.noticia-texto {
+		width: 100%;
+	}
+
+	nav {
+		display: none;
+		float: none;
+		clear: left;
+		padding-top: 2rem;
+	}
+	nav ul li{
+		display: block;
+		text-align: center;
+
+	}
+	button:focus + nav { /*el FOCUS lo usamos para que interactue con el posicionamiento del cursor del mouse. Si alguien se enfoca en el selector con el mouse, que haga lo que le indiquemos*/
+	display: block;
+	}
+	#tabla-posiciones {
+		display: none;
+	}
+
+}
